@@ -21,6 +21,17 @@ function setupMap(centerPosition) {
     map.on('style.load', () => {
         map.setFog({})
     });
+
+    // adding navigation control to our map
+    const nav = new mapboxgl.NavigationControl({
+        visualizePitch: true
+    });
+    map.addControl(nav, 'bottom-right');
+
+    map.addControl(
+        new MapboxDirections({
+        accessToken: mapboxgl.accessToken
+        }),'top-left');
 }
 
 // Function for a successful location
